@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>F1H20 Registration Form</title>
+<script type="text/javascript">
+function validate(){
+
+	//Username
+	exp=/^(F|f)[a-z A-z]{4,9}$/;
+	var u1=document.getElementById('username').value.match(exp);
+	var u2=document.getElementById('username').value;
+	if(!u1){
+		document.getElementById("username").style.border="2px solid red";
+		document.getElementById("user").style.visibility="visible";
+		alert("please enter valid name");
+		return false;
+	}
+
+	//Email
+	exp1=/^[a-z,A-Z,0-9][0-9,A-Z,a-z,-,.]*@[a-z]{3,6}\.((com)|(in)|(net)|(edu))?$/;
+	var e1=document.getElementById('mail').value.match(exp1);
+	var e2=document.getElementById('mail').value;
+	if(!e1){
+		document.getElementById("mail").style.border="2px solid red";
+		document.getElementById("e-mail").style.visibility="visible";
+		return false;
+	}
+
+	//Mobile number
+	m3=document.getElementById('num1').value
+	m1=/^(977)[0-9]{7}$/;
+	m2=/\d{4}-\d{4}-\d{4}$/;
+	if((m1.test(m3)==false) && (m2.test(m3)==false))
+	{
+		alert("please enter valid  mobile number");
+        return false;
+	}
+	Beer();
+    var x=number();
+    if(x==false)
+    {
+        alert("please enter valid payment number");
+        return false;
+    }
+    rent();
+}
+function Beer()
+{
+	var d=document.getElementById("america").checked;
+	var d1=document.getElementById("england").checked;
+	var d2=document.getElementById("germany").checked;
+	var d4=document.getElementById("india").checked;
+	var d5=document.getElementById("rgukt").checked;
+    if(d==true || d1==true || d2==true)
+    {
+        var s=confirm("do you need beer");
+        if(s==true)
+        {
+            alert("They require beer");
+        }
+        else
+        {
+            alert("They don't require beer");
+        }
+    }
+}
+function number()
+{
+ 	var t=document.getElementById("typ1").checked;
+    var t1=document.getElementById("typ2").checked;
+    var t5=document.getElementById("pay").value;
+    var t2=/^SBIN\d{7}$/;
+    var t4=/^\d{11}$/;
+    if(t==true)
+    {
+        alert("you selected for DD number");
+        if(t2.test(t5)==false)
+        {
+            alert("please enter valid dd number");
+            return false;
+        }
+    }
+	else if(t1==true)
+	{
+		alert("you selected for Account number");
+		if(t4.test(t5)==false)
+        {
+        	alert("please enter valid account number");
+            return false;
+        }
+    }
+}
+function rent()
+{
+	var y=document.getElementById("days").value;
+    var y1=document.getElementById("nuz").checked;
+    var y2=document.getElementById("rkv").checked;
+    var y5=document.getElementById("ong").checked;
+    var y6=document.getElementById("sklm").checked;
+    var r=0;
+	if(y1==true || y2==true)
+	{
+		r=y*2000;
+        alert("you have to pay: "+r+" rupees");
+    }
+    else if(y5==true || y6==true)
+    {
+        r=y*3000;
+        alert("you have to pay: "+r+" rupees");
+    }
+    document.getElementById("re").value=r;
+}
+function kn()
+{
+    document.getElementById("container").style.backgroundColor="green";
+    document.getElementById("container").style.color="yellow";
+}
+function nk()
+{
+    document.getElementById("container").style.backgroundColor="blue";
+    document.getElementById("container").style.color="white";
+}
+function display(){
+	document.getElementById('username').value=document.getElementById('username').value.toUpperCase();
+}
+</script>
+
+<style type="text/css">
+	
+#container{
+	width: 240px;
+	height: 70px;
+	background-color:lightblue ;
+	border-radius: 10%;
+}
+.h{
+	text-align: center;
+	padding-top: 10px;
+}
+sub{
+	font-size: 10px;
+	color: red;
+}
+
+.registration-form{
+	width: 600px;
+	height: 600px;
+	background-color: pink;
+}
+body{
+	background-image: url('n1.jpg');
+	background-repeat: no-repeat;
+	background-size: 1200px 1200px;
+	background-position: center;
+	animation-name: nature;
+	animation-duration: 20s;
+	animation-iteration-count: 1000;
+}
+@keyframes nature{
+	0%
+	{
+		background-image: url('n1.jpg');
+		background-repeat: no-repeat;
+		background-size: 1200px 1200px;
+	}
+	10%
+	{
+		background-image: url('n2.jpg');
+		background-repeat: no-repeat;
+		background-size: 1200px 1200px;
+	}
+	20%
+	{
+		background-image: url('n3.jpg');
+		background-repeat: no-repeat;
+		background-size: 1200px 1200px;
+	}
+	30%
+	{
+		background-image: url('n4.jpg');
+		background-repeat: no-repeat;
+		background-size: 1200px 1200px;
+	}
+	40%
+	{
+		background-image: url('n5.jpg');
+		background-repeat: no-repeat;
+		background-size: 1200px 1200px;
+	}
+}
+</style>
+</head>
+<body>
+<center>
+<div id='container'>
+<h1 class="h"><u>F1H20</u><sub>RGUKT</sub></h1>
+</div>
+
+<div class='registration-form'>
+	<h1><u>Registration Form</u></h1>
+<form action='/k.php' method="post" onsubmit="return validate();">
+<table>
+
+	<tr><th>Username : </th>
+	<td><input type='text' id='username' required>
+		<label id='user' style="color:red; visibility: hidden;">Invalid username</label>
+	</td></tr>
+	<tr><th>Email : </th>
+		<td><input type='email' id='mail' required>
+			<label id='e-mail' style="color:red; visibility: hidden;">Invalid mail address</label>
+		</td>
+	</tr>
+	<tr><th>Mobile Number : </th>
+		<td><input type='number' id='num1' >
+			<label id='num' style="color:red; visibility: hidden;">Invalid mobile number</label>
+		</td>
+	</tr>
+	<tr>
+		<th>Participants country: </th>
+		<td>
+		<fieldset>
+			<legend>Select one from list</legend>
+		India <input type="radio" name="cont" id='india'>
+		America <input type="radio" name="cont" id='america'>
+		England <input type="radio" name="cont" id='england'>
+		Germany <input type="radio" name="cont" id='germany'>
+		Frim representative of RGUKT(Student,faculty members) <input type="radio" id='rgukt'name="cont">
+		</fieldset></td>
+	</tr>
+	<tr>
+		<th>Payment Method: </th>
+		<td><input type="radio" id='typ1'>DD account
+		<input type="radio" id="typ2">Account Number</td>
+
+	</tr>
+	<tr><th>Payment Number</th><td><input type="text" id="pay"></td></tr>
+	<tr><td>
+	<tr>
+		<th>Type Of Accommodations</th>
+		<td>
+		<fieldset>
+		<legend>Select One</legend>
+		INuzvid<input type="radio" id='nuz'name="acc">
+		IKadapa<input type="radio"id='rkv' name="acc">
+		ISKLM<input type="radio" id='sklm'name ="acc">
+		IONGOLE<input type="radio" id='ong'name="acc"></fieldset>
+		</td>
+	</tr>
+	<tr>
+		<th>Services</th>
+		<td>
+		<fieldset>
+		<legend>Select One</legend>
+		Breakfast<input type="checkbox" id='breakfast'>
+		Lunck<input type="checkbox" id='lunch'>
+		Snacks<input type="checkbox" id="acc">
+		Tea<input type="checkbox" id="tea">
+		Coffee<input type="checkbox" id='coffee'>
+		Eggs<input type="checkbox" id="eggs"></fieldset>
+		</td>
+	</tr>
+	<tr></tr>
+	<tr>
+		<th>No Of Days staying</th>
+		<td><input type="text" id='days'></td>
+	</tr>
+	<tr>
+		<th>Rent for staying days</th>
+		<td><input type="text" id='rent'readonly></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td><input type='submit' value='Submit'>
+	</td></tr>
+
+</table>
+</form>
+</div>
+<script>
+var u=document.getElementById('username');
+u.addEventListener('keyup',display);
+
+var d=document.getElementById("container");
+d.addEventListener('mouseover',kn);
+d.addEventListener('mouseout',nk);
+
+</script>
+<script >
+var div=document.querySelector('registration-form');
+div.addEventListener('mouseover',function(e){
+	x=e.offsetX;
+	y=e.offsetY;
+	div.style.backgroundColor='yellow'
+})
+
+</script>
+<!-- <script type="text/javascript">
+setInterval(
+	function () {
+  		var randomColor = Math.floor(Math.random()*11000).toString(16);
+  		document.body.style.backgroundColor = "#"+randomColor;
+},1000);
+</script> -->
+
+
+</body>
+</html>
